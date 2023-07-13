@@ -1,1 +1,110 @@
+.container {
+    display: grid;
+    height: 500px;
+    width: 300px;
+    margin: 10px 500px;
+    outline: black auto 2px;
+    background-color: slategray;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
 
+.screen {
+    width: 270px;
+    height: 70px;
+    background-color: lightgrey;
+    color: black;
+    outline: black auto 2px;
+    margin: 15px;
+
+}
+
+#inputScreen {
+    height: 30px;
+    font: 18;
+}
+
+#outputScreen {
+    height: 40px;
+    font: 24;
+}
+
+.assist {
+    width: 270px;
+    height: 60px;
+    background-color: darkslateblue;
+    color: black;
+    outline: black auto 2px;
+    margin: -35px 15px;
+    font-size: 34px;
+    color: white;
+    font-weight: 700;
+}
+
+.otherFunctions {
+    width: 200px;
+    height: 180px;
+    margin-top: -1px;
+    margin-left: 15px;
+    margin-bottom: -180px;
+}
+
+.other {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+    outline: black auto 1px;
+}
+
+.numberContainer {
+    width: 200px;
+    height: 180px;
+    margin-top: 35px;
+    margin-left: 15px;
+}
+
+.number {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+    outline: black auto 1px;
+}
+
+.function:hover {
+    background-color: beige;
+}
+
+.number:hover {
+    background-color: lightgrey;
+}
+
+.other:hover {
+    background-color: lightgrey;
+}
+
+.assist:hover {
+    color: darkslateblue;
+    background-color: white;
+}
+
+.functionContainer {
+    height: 220px;
+    width: 70px;
+    margin-left: 225px;
+    margin-top: -293px;
+    margin-bottom: 15px;
+}
+
+.function {
+    background-color: lightgray;
+    color: black;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+    outline: black auto 1px;
+    margin-top: 3px;
+}
