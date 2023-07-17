@@ -9,37 +9,38 @@
 <body>
     <div class="container">
         <div class="screen">
-            <div id="inputScreen"></div>
-            <div id="outputScreen"></div>
+            <div id="inputScreen" data-inputScreen>0</div>
+            <div id="outputScreen" data-outputScreen> 0 </div>
         </div>
         <button class="assist">Assistance</button>
         <div class="otherFunctions">
-            <button class="other">CE</button>
-            <button class="other">C</button>
-            <button class="other">%</button>
+            <button class="btn"data-clear-entry="CE">CE</button>
+            <button class="btn"data-clear-all="C">C</button>
+            <button class="btn"data-operation>%</button>
         </div> 
         <div class="numberContainer">
-            <button class="number">7</button>
-            <button class="number">8</button>
-            <button class="number">9</button>
-            <button class="number">4</button>
-            <button class="number">5</button>
-            <button class="number">6</button>
-            <button class="number">1</button>
-            <button class="number">2</button>
-            <button class="number">3</button>
-            <button class="number">+/-</button>
-            <button class="number">0</button>
-            <button class="number">.</button>
+            <button class="btn" data-number="7">7</button>
+            <button class="btn" data-number="8">8</button>
+            <button class="btn" data-number="9">9</button>
+            <button class="btn" data-number="4">4</button>
+            <button class="btn" data-number="5">5</button>
+            <button class="btn" data-number="6">6</button>
+            <button class="btn" data-number="1">1</button>
+            <button class="btn" data-number="2">2</button>
+            <button class="btn" data-number="3">3</button>
+            <button class="btn" data-operation="+/-">+/-</button>
+            <button class="btn" data-number="0">0</button>
+            <button class="btn" data-number=".">.</button>
         </div>
         <div class="functionContainer">
-            <button class="function">÷</button>
-            <button class="function">x</button>
-            <button class="function">-</button>
-            <button class="function">+</button>
-            <button class="function">=</button>
+            <button class="btn" data-operation="/">÷</button>
+            <button class="btn" data-operation="*">x</button>
+            <button class="btn" data-operation="-">-</button>
+            <button class="btn" data-operation="+">+</button>
+            <button class="btn" data-equals="==">=</button>
         </div>
     </div>
+<h3>Built and designed by Phil Pell</h3>
 <script src="script.js"></script>
 </body>
 </html>

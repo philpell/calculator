@@ -1,3 +1,7 @@
+body {
+    background-color: #02392e;
+}
+
 .container {
     display: grid;
     height: 500px;
@@ -10,23 +14,25 @@
 }
 
 .screen {
-    width: 270px;
+    width: 266px;
     height: 70px;
     background-color: lightgrey;
     color: black;
     outline: black auto 2px;
     margin: 15px;
-
+    text-align: right;
+    padding-right: 4px;
+    padding-top: 4px;
 }
 
 #inputScreen {
     height: 30px;
-    font: 18;
+    font-size: 18;
 }
 
 #outputScreen {
     height: 40px;
-    font: 24;
+    font-size: 30px;
 }
 
 .assist {
@@ -65,7 +71,7 @@
     margin-left: 15px;
 }
 
-.number {
+.btn {
     background-color: white;
     color: black;
     font-size: 20px;
@@ -74,15 +80,7 @@
     outline: black auto 1px;
 }
 
-.function:hover {
-    background-color: beige;
-}
-
-.number:hover {
-    background-color: lightgrey;
-}
-
-.other:hover {
+.btn:hover {
     background-color: lightgrey;
 }
 
@@ -107,4 +105,13 @@
     width: 60px;
     outline: black auto 1px;
     margin-top: 3px;
+}
+h3 {
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    margin-top: -200px;
+    text-align: right;
+    font-size: 14px;
+    color: white;
+    font
 }
