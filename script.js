@@ -1,18 +1,18 @@
 //Create a basic calculator
 //Set up the initial data variables
-const inputCalculation = document.querySelector('[data-inputScreen]')
-const outputSum = document.querySelector('[data-outputScreen]')
 const numberBtns = document.querySelectorAll('[data-number]')
 const opsBtns = document.querySelectorAll('[data-operation]')
 const equalsBtn = document.querySelectorAll('[data-equals]')
-const clearEntryBtn = document.querySelector('[data-clear-entry]')
+const clearEntryBtn = document.querySelectorAll('[data-clear-entry]')
 const clearAllBtn = document.querySelectorAll('[data-clear-all]')
 
 //Set up the initial JS variables
 let firstValue = '';
 let secondValue = '';
 let sumTotal = 0;
-let operator = '';
+let firstOperator = '';
+let secondOperator = '';
+let displayOperator = '';
 let inputCalc ='';
 document.getElementById("inputScreen").textContent = ('');
 
@@ -21,7 +21,7 @@ numberBtns.forEach(button => {
   button.addEventListener('click', function(e){
     if (button.getAttribute("data-number") >= "0" && button.getAttribute("data-number") <= "9") {
       firstValue = firstValue + parseInt(button.getAttribute("data-number"), 10);
-      document.getElementById("inputScreen").textContent = (inputCalc + firstValue);
+      document.getElementById("inputScreen").textContent = (inputCalc);
       document.getElementById("outputScreen").textContent = (firstValue);
       return firstValue;
   }
@@ -31,63 +31,40 @@ numberBtns.forEach(button => {
 //Add event listener to operator buttons to record click and perform action 
 opsBtns.forEach(button => {
   button.addEventListener('click', function(e){
-    if (button.getAttribute("data-operation") == "+") {
-      operator = button.getAttribute("data-operation");
-      secondValue = firstValue;
-      inputCalc = secondValue + ' + ';
-      document.getElementById("inputScreen").textContent = (inputCalc);
-      firstValue = '';
-      return firstValue, inputCalc;
+    secondOperator = button.getAttribute("data-operation");
+    if (secondOperator == "+") {
+      setOperation();
+      
+    } else if (secondOperator == "-") {
+      setOperation();
 
-  } else if (button.getAttribute("data-operation") == "-") {
-      operator = button.getAttribute("data-operation");
-      secondValue = firstValue;
-      inputCalc = secondValue + ' - ';
-      document.getElementById("inputScreen").textContent = (inputCalc);
-      firstValue = '';
-      return firstValue, inputCalc;
+    } else if (secondOperator == "*") {
+      setOperation();
 
-  } else if (button.getAttribute("data-operation") == "*") {
-      operator = button.getAttribute("data-operation");
-      secondValue = firstValue;
-      inputCalc = secondValue + ' x ';
-      document.getElementById("inputScreen").textContent = (inputCalc);
-      firstValue = '';
-      return firstValue, inputCalc;
-
-  } else if (button.getAttribute("data-operation") == "/") {
-      operator = button.getAttribute("data-operation");
-      secondValue = firstValue;
-      inputCalc = secondValue + ' ÷ ';
-      document.getElementById("inputScreen").textContent = (inputCalc);
-      firstValue = '';
-      return firstValue, inputCalc;
-} 
-})
+    } else if (secondOperator == "/") {
+      setOperation();
+    }
+  })
 })
 
 //Add event listener to the equals buttons to record click and perform action 
 equalsBtn.forEach(button => {
   button.addEventListener('click', function(e){
-    if (operator == "+") {
+    if (firstOperator == "+") {
       addValue(firstValue,secondValue)
-      document.getElementById("inputScreen").textContent = (inputCalc + firstValue + ' = ');
-      document.getElementById("outputScreen").textContent = (sumTotal);
+      setAfterEquals()
 
-  } else if (operator == "-") {
+  } else if (firstOperator == "-") {
       subtractValue(firstValue,secondValue)
-      document.getElementById("inputScreen").textContent = (inputCalc + firstValue + ' = ');
-      document.getElementById("outputScreen").textContent = (sumTotal);
+      setAfterEquals()
 
-  } else if (operator == "*") {
+  } else if (firstOperator == "*") {
       mulitplyValue(firstValue,secondValue)
-      document.getElementById("inputScreen").textContent = (inputCalc + firstValue + ' = ');
-      document.getElementById("outputScreen").textContent = (sumTotal);
+      setAfterEquals()
 
-  } else if (operator == "/") {
+  } else if (firstOperator == "/") {
       divideValue(firstValue,secondValue)
-      document.getElementById("inputScreen").textContent = (inputCalc + firstValue + ' = ');
-      document.getElementById("outputScreen").textContent = (sumTotal);
+      setAfterEquals()
   }
 })
 })
@@ -96,17 +73,28 @@ equalsBtn.forEach(button => {
 clearAllBtn.forEach(button => {
   button.addEventListener('click', function(e){
     if (button.getAttribute("data-clear-all") == "C") {
-      operator = '';
-      secondValue = '';
-      firstValue = '';
-      inputCalc = '';
-      document.getElementById("inputScreen").textContent = ('');
-      document.getElementById("outputScreen").textContent = ('0');
+      clearScreens()
   }
 })
 })
 
-//Set up the functions to perform calculations based on operator
+//Add event listener to clear current entry button to record click and perform action 
+clearEntryBtn.forEach(button => {
+  button.addEventListener('click', function(e){
+    if (button.getAttribute("data-clear-entry") == "CE") {
+      if(firstOperator == '='){
+        clearScreens()
+      } else {
+          firstValue = '';
+          document.getElementById("inputScreen").textContent = (inputCalc + firstValue);
+          document.getElementById("outputScreen").textContent = ('0');
+          return firstValue;
+      }
+  }
+})
+})
+
+//Set up functions to perform calculations based on operator
 function addValue(firstValue,secondValue) {
   sumTotal = parseInt(firstValue) + parseInt(secondValue);
   return sumTotal;
@@ -126,3 +114,86 @@ function mulitplyValue(firstValue,secondValue) {
   sumTotal = parseInt(secondValue) * parseInt(firstValue);
   return sumTotal;
 };
+
+//Set up function to clear inputs
+function clearScreens() {
+  firstOperator = '';
+  secondValue = '';
+  firstValue = '';
+  inputCalc = '';
+  document.getElementById("inputScreen").textContent = ('');
+  document.getElementById("outputScreen").textContent = ('0');
+}
+
+//Set up function for screen display after equals press
+function setAfterEquals() {
+  document.getElementById("inputScreen").textContent = (inputCalc + firstValue + ' = ');
+  document.getElementById("outputScreen").textContent = (sumTotal);
+  firstOperator = '=';
+}
+
+//Set up function to show current sum and operator 
+function setOperation(){
+  if(firstOperator == '='){
+    setScreen();
+
+} else if(firstOperator == '+'){
+    addValue(firstValue,secondValue)
+    setScreen()
+    document.getElementById("outputScreen").textContent = (sumTotal);
+    sumtotal = sumTotal + firstValue
+
+} else if (firstOperator == "-") {
+    subtractValue(firstValue,secondValue)
+    setScreen()
+    document.getElementById("outputScreen").textContent = (sumTotal);
+    sumtotal = sumTotal + firstValue
+
+} else if (firstOperator == "*") {
+    mulitplyValue(firstValue,secondValue)
+    setScreen()
+    document.getElementById("outputScreen").textContent = (sumTotal);
+    sumtotal = sumTotal + firstValue
+
+} else if (firstOperator == "/") {
+    divideValue(firstValue,secondValue)
+    setScreen()
+    document.getElementById("outputScreen").textContent = (sumTotal);
+    sumtotal = sumTotal + firstValue
+
+} else {
+    firstOperator = secondOperator;
+    secondOperator = '';
+    secondValue = firstValue;
+    convertOperator()
+    inputCalc = secondValue + displayOperator;
+    document.getElementById("inputScreen").textContent = (inputCalc);
+    firstValue = '';
+    return firstValue, inputCalc, firstOperator;
+}
+}
+
+//Set up function to display correct values during the calculations
+function setScreen(){
+  firstOperator = secondOperator;
+  secondOperator = '';
+  secondValue = sumTotal;
+  firstValue = '';
+  convertOperator()
+  inputCalc = sumTotal + displayOperator;
+  document.getElementById("inputScreen").textContent = (inputCalc);
+  return firstValue, inputCalc, firstOperator;
+}
+
+//Set up function to display correct symbols 
+function convertOperator() {
+  if(firstOperator == '+'){
+      displayOperator = ' + ';
+  } else if (firstOperator == '-') {
+      displayOperator = ' - ';
+  } else if (firstOperator == '*') {
+      displayOperator = ' x ';
+  }  else if (firstOperator == '/') {
+      displayOperator = ' ÷ '
+    }
+  }

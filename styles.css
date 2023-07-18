@@ -89,15 +89,19 @@ body {
     background-color: white;
 }
 
+#function:hover {
+    background-color: white;
+}
+
 .functionContainer {
     height: 220px;
     width: 70px;
     margin-left: 225px;
-    margin-top: -293px;
+    margin-top: -292px;
     margin-bottom: 15px;
 }
 
-.function {
+#function {
     background-color: lightgray;
     color: black;
     font-size: 20px;
