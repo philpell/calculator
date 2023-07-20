@@ -1,28 +1,30 @@
 body {
-    background-color: #02392e;
+    background-color: darkslategrey;
 }
 
 .container {
     display: grid;
-    height: 500px;
+    height: 440px;
     width: 300px;
-    margin: 10px 500px;
-    outline: black auto 2px;
-    background-color: slategray;
+    margin: 50px 500px;
+    outline: rgb(6, 0, 33) solid 1px;
+    border-radius: 20px;
+    background-color: rgb(46, 96, 145);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-shadow: 0px 0px 20px 0px rgb(37, 36, 36);
     
 }
 
 .screen {
-    width: 266px;
+    max-width: 266px;
     height: 70px;
     background-color: lightgrey;
     color: black;
     outline: black auto 2px;
-    margin: 15px;
+    margin: 15px 15px -10px;
     text-align: right;
-    padding-right: 4px;
-    padding-top: 4px;
+    padding: 4px 4px 0 0;
+    border-radius: 10px;
 }
 
 #inputScreen {
@@ -35,28 +37,14 @@ body {
     font-size: 30px;
 }
 
-.assist {
-    width: 270px;
-    height: 60px;
-    background-color: darkslateblue;
-    color: black;
-    outline: black auto 2px;
-    margin: -35px 15px;
-    font-size: 34px;
-    color: white;
-    font-weight: 700;
-}
-
 .otherFunctions {
     width: 200px;
     height: 180px;
-    margin-top: -1px;
-    margin-left: 15px;
-    margin-bottom: -180px;
+    margin: -1px 0 -180px 15px;
 }
 
 .other {
-    background-color: white;
+    background-color: rgb(184, 183, 255);
     color: black;
     font-size: 20px;
     height: 60px;
@@ -67,8 +55,7 @@ body {
 .numberContainer {
     width: 200px;
     height: 180px;
-    margin-top: 35px;
-    margin-left: 15px;
+    margin: 35px 0 15px 15px;
 }
 
 .btn {
@@ -77,45 +64,60 @@ body {
     font-size: 20px;
     height: 60px;
     width: 60px;
-    outline: black auto 1px;
+    outline: rgb(6, 0, 33) solid 1px;
+    margin: 1px;
+    border-radius: 12px;
 }
 
 .btn:hover {
-    background-color: lightgrey;
+    background-color: rgba(0, 3, 89, 0.3);
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
 }
 
-.assist:hover {
-    color: darkslateblue;
-    background-color: white;
+.btn:active {
+    height: 58px;
+    width: 58px;
+    transform: translateY(1px);
+    margin: 2px;
 }
 
 #function:hover {
     background-color: white;
+    color: rgb(0, 3, 89);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#function:active {
+    height: 58px;
+    width: 58px;
+    transform: translateY(1px);
+    margin: 2px;
 }
 
 .functionContainer {
     height: 220px;
     width: 70px;
-    margin-left: 225px;
-    margin-top: -292px;
-    margin-bottom: 15px;
+    margin: -297px 0 15px 225px;
 }
 
 #function {
-    background-color: lightgray;
-    color: black;
+    background-color: rgba(0, 3, 89, 0.3);
+    color: white;
     font-size: 20px;
     height: 60px;
     width: 60px;
-    outline: black auto 1px;
-    margin-top: 3px;
+    outline: rgb(6, 0, 33) solid 1px;
+    margin-top: 2px;
 }
+
 h3 {
     writing-mode: vertical-rl;
     text-orientation: sideways;
-    margin-top: -200px;
-    text-align: right;
-    font-size: 14px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: -220px;
+    font-size: 12px;
     color: white;
-    font
 }
