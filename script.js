@@ -17,7 +17,6 @@ let workingCalc ='';
 let sumCalc ='';
 let decimalPoint = false;
 let plusMinus = false;
-let percentageValue = '';
 
 document.getElementById("inputScreen").textContent = ('');
 
@@ -84,14 +83,25 @@ opsBtns.forEach(button => {
       setOperation();
       decimalPoint = false;
 
+      //Percentage btn only effected if used in 2nd part of calculation 
     } else if (secondOperator == "%") {
       if(secondValue != ''){
-        percentageValue = (secondValue/100) * firstValue
-        document.getElementById("outputScreen").textContent = (firstValue + '%');
         decimalPoint = false;
-        firstValue = percentageValue
+        
+        if (firstOperator == "/" || firstOperator == "*") {
+          firstValue = (firstValue/100)
+          document.getElementById("outputScreen").textContent = (firstValue);
+        
+      } else {
+          firstValue = (firstValue/100) * secondValue
+          document.getElementById("outputScreen").textContent = (firstValue);
       }
-
+      //Set 1st value to 0 if attempt to use % 1st part of calculation  
+    } else {
+      firstValue = '0';
+      document.getElementById("outputScreen").textContent = (firstValue);
+      decimalPoint = false;
+    }
     } else if (secondOperator == "+/-"){
         if(firstOperator == '='|| firstValue == ''){
 
@@ -166,7 +176,7 @@ clearEntryBtn.forEach(button => {
 //Set up functions to perform calculations based on operator
 function addValue(firstValue,secondValue) {
   sumTotal = parseFloat(secondValue) + parseFloat(firstValue);
-
+  sumTotal
 };
 
 function divideValue(firstValue,secondValue) {
@@ -198,6 +208,7 @@ function clearScreens() {
 function setAfterEquals() {
   sumCalc = workingCalc + firstValue + ' = '
   document.getElementById("inputScreen").textContent = (sumCalc);
+  sumTotal = Math.round((sumTotal + Number.EPSILON) * 100) / 100;
   document.getElementById("outputScreen").textContent = (sumTotal);
   firstOperator = '=';
   firstValue = '';
@@ -215,25 +226,25 @@ function setOperation(){
     addValue(firstValue,secondValue)
     setScreen()
     document.getElementById("outputScreen").textContent = (sumTotal);
-    sumtotal = sumTotal + firstValue
+    sumTotal = sumTotal + firstValue
 
 } else if (firstOperator == "-") {
     subtractValue(firstValue,secondValue)
     setScreen()
     document.getElementById("outputScreen").textContent = (sumTotal);
-    sumtotal = sumTotal + firstValue
+    sumTotal = sumTotal + firstValue
 
 } else if (firstOperator == "*") {
     mulitplyValue(firstValue,secondValue)
     setScreen()
     document.getElementById("outputScreen").textContent = (sumTotal);
-    sumtotal = sumTotal + firstValue
+    sumTotal = sumTotal + firstValue
 
 } else if (firstOperator == "/") {
     divideValue(firstValue,secondValue)
     setScreen()
     document.getElementById("outputScreen").textContent = (sumTotal);
-    sumtotal = sumTotal + firstValue
+    sumTotal = sumTotal + firstValue
 
 } else {
     firstOperator = secondOperator;
